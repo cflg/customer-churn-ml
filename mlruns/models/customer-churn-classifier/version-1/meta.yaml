@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1790108979558
+current_stage: None
+description: null
+last_updated_timestamp: 1790108979558
+name: customer-churn-classifier
+run_id: d8ce42b0f1dc4891bfa8e4267b840f0b
+run_link: null
+source: file:///home/claude/proj/customer-churn-ml/mlruns/963698558758608091/d8ce42b0f1dc4891bfa8e4267b840f0b/artifacts/model
+status: READY
+status_message: null
+storage_location: file:///home/claude/proj/customer-churn-ml/mlruns/963698558758608091/d8ce42b0f1dc4891bfa8e4267b840f0b/artifacts/model
+user_id: null
+version: 1

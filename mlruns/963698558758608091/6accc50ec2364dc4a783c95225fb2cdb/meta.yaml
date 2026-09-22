@@ -1,0 +1,15 @@
+artifact_uri: file:///home/claude/proj/customer-churn-ml/mlruns/963698558758608091/6accc50ec2364dc4a783c95225fb2cdb/artifacts
+end_time: 1790108949271
+entry_point_name: ''
+experiment_id: '963698558758608091'
+lifecycle_stage: active
+run_id: 6accc50ec2364dc4a783c95225fb2cdb
+run_name: logreg_C1_balanced
+run_uuid: 6accc50ec2364dc4a783c95225fb2cdb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1790108946286
+status: 3
+tags: []
+user_id: root

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/claude/proj/customer-churn-ml/mlruns/963698558758608091/763b9a7277c148549f3b02c5a4e0753d/artifacts
+end_time: 1790108934239
+entry_point_name: ''
+experiment_id: '963698558758608091'
+lifecycle_stage: active
+run_id: 763b9a7277c148549f3b02c5a4e0753d
+run_name: baseline_most_frequent
+run_uuid: 763b9a7277c148549f3b02c5a4e0753d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1790108931138
+status: 3
+tags: []
+user_id: root

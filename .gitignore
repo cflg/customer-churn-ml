@@ -1,25 +1,4 @@
-# datos (van con DVC, no con git)
 /data/raw/*.csv
 /data/processed/*.csv
 !/data/.gitkeep
-
-# mlflow / modelos locales
-mlruns/
-mlartifacts/
-models/*
-!models/.gitkeep
-
-# python
-__pycache__/
-*.pyc
-.venv/
-venv/
-*.egg-info/
-
-# entorno / secretos
-.env
-.dvc/config.local
-
-# varios
-.ipynb_checkpoints/
-predictions.csv
+/data
