@@ -1,0 +1,317 @@
+{
+  "model_name": "customer-churn-classifier",
+  "model_version": "1",
+  "run_id": "d8ce42b0f1dc4891bfa8e4267b840f0b",
+  "evidently": {
+    "html_report": "monitoring/reports/data_drift_report.html",
+    "dataset_drift": true,
+    "share_of_drifted_columns": 0.5789,
+    "drifted_columns_count": 11,
+    "drifted_columns": [
+      {
+        "column": "MonthlyCharges",
+        "stattest_name": "Wasserstein distance (normed)",
+        "drift_score": 0.485777
+      },
+      {
+        "column": "TotalCharges",
+        "stattest_name": "Wasserstein distance (normed)",
+        "drift_score": 0.17019
+      },
+      {
+        "column": "tenure",
+        "stattest_name": "Wasserstein distance (normed)",
+        "drift_score": 0.476822
+      },
+      {
+        "column": "Contract",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.106185
+      },
+      {
+        "column": "DeviceProtection",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.10207
+      },
+      {
+        "column": "InternetService",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.115502
+      },
+      {
+        "column": "OnlineBackup",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.100894
+      },
+      {
+        "column": "OnlineSecurity",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.118385
+      },
+      {
+        "column": "StreamingMovies",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.115423
+      },
+      {
+        "column": "StreamingTV",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.119237
+      },
+      {
+        "column": "TechSupport",
+        "stattest_name": "Jensen-Shannon distance",
+        "drift_score": 0.112264
+      }
+    ]
+  },
+  "distributions": {
+    "reference_rows": 7043,
+    "current_rows": 2500,
+    "numeric_shifts": {
+      "tenure": {
+        "reference_mean": 35.1684,
+        "current_mean": 26.1564,
+        "abs_diff": -9.012,
+        "rel_diff_pct": -25.63
+      },
+      "MonthlyCharges": {
+        "reference_mean": 68.1685,
+        "current_mean": 80.3027,
+        "abs_diff": 12.1342,
+        "rel_diff_pct": 17.8
+      },
+      "TotalCharges": {
+        "reference_mean": 2312.0776,
+        "current_mean": 2044.2524,
+        "abs_diff": -267.8251,
+        "rel_diff_pct": -11.58
+      },
+      "SeniorCitizen": {
+        "reference_mean": 0.1701,
+        "current_mean": 0.1748,
+        "abs_diff": 0.0047,
+        "rel_diff_pct": 2.76
+      },
+      "predicted_probability": {
+        "reference_mean": 0.4211,
+        "current_mean": 0.6349,
+        "abs_diff": 0.2137,
+        "rel_diff_pct": 50.75
+      }
+    },
+    "categorical_shifts": {
+      "gender": {
+        "reference_distribution": {
+          "Male": 0.5055,
+          "Female": 0.4945
+        },
+        "current_distribution": {
+          "Male": 0.5104,
+          "Female": 0.4896
+        },
+        "max_category_shift_pct": 0.49
+      },
+      "Partner": {
+        "reference_distribution": {
+          "No": 0.5144,
+          "Yes": 0.4856
+        },
+        "current_distribution": {
+          "No": 0.57,
+          "Yes": 0.43
+        },
+        "max_category_shift_pct": 5.56
+      },
+      "Dependents": {
+        "reference_distribution": {
+          "No": 0.7034,
+          "Yes": 0.2966
+        },
+        "current_distribution": {
+          "No": 0.7556,
+          "Yes": 0.2444
+        },
+        "max_category_shift_pct": 5.22
+      },
+      "PhoneService": {
+        "reference_distribution": {
+          "Yes": 0.9042,
+          "No": 0.0958
+        },
+        "current_distribution": {
+          "Yes": 0.9096,
+          "No": 0.0904
+        },
+        "max_category_shift_pct": 0.54
+      },
+      "MultipleLines": {
+        "reference_distribution": {
+          "No": 0.4907,
+          "Yes": 0.4135,
+          "No phone service": 0.0958
+        },
+        "current_distribution": {
+          "No": 0.4588,
+          "Yes": 0.4508,
+          "No phone service": 0.0904
+        },
+        "max_category_shift_pct": 3.73
+      },
+      "InternetService": {
+        "reference_distribution": {
+          "Fiber optic": 0.4494,
+          "DSL": 0.3307,
+          "No": 0.2199
+        },
+        "current_distribution": {
+          "Fiber optic": 0.5856,
+          "DSL": 0.3,
+          "No": 0.1144
+        },
+        "max_category_shift_pct": 13.62
+      },
+      "OnlineSecurity": {
+        "reference_distribution": {
+          "No": 0.4548,
+          "Yes": 0.3253,
+          "No internet service": 0.2199
+        },
+        "current_distribution": {
+          "No": 0.5988,
+          "Yes": 0.2868,
+          "No internet service": 0.1144
+        },
+        "max_category_shift_pct": 14.4
+      },
+      "OnlineBackup": {
+        "reference_distribution": {
+          "No": 0.4348,
+          "Yes": 0.3453,
+          "No internet service": 0.2199
+        },
+        "current_distribution": {
+          "No": 0.5016,
+          "Yes": 0.384,
+          "No internet service": 0.1144
+        },
+        "max_category_shift_pct": 10.55
+      },
+      "DeviceProtection": {
+        "reference_distribution": {
+          "No": 0.4287,
+          "Yes": 0.3514,
+          "No internet service": 0.2199
+        },
+        "current_distribution": {
+          "No": 0.5092,
+          "Yes": 0.3764,
+          "No internet service": 0.1144
+        },
+        "max_category_shift_pct": 10.55
+      },
+      "TechSupport": {
+        "reference_distribution": {
+          "No": 0.4698,
+          "Yes": 0.3102,
+          "No internet service": 0.2199
+        },
+        "current_distribution": {
+          "No": 0.5988,
+          "Yes": 0.2868,
+          "No internet service": 0.1144
+        },
+        "max_category_shift_pct": 12.9
+      },
+      "StreamingTV": {
+        "reference_distribution": {
+          "No": 0.3933,
+          "Yes": 0.3868,
+          "No internet service": 0.2199
+        },
+        "current_distribution": {
+          "Yes": 0.5264,
+          "No": 0.3592,
+          "No internet service": 0.1144
+        },
+        "max_category_shift_pct": 13.96
+      },
+      "StreamingMovies": {
+        "reference_distribution": {
+          "No": 0.3957,
+          "Yes": 0.3844,
+          "No internet service": 0.2199
+        },
+        "current_distribution": {
+          "Yes": 0.5136,
+          "No": 0.372,
+          "No internet service": 0.1144
+        },
+        "max_category_shift_pct": 12.92
+      },
+      "Contract": {
+        "reference_distribution": {
+          "Month-to-month": 0.5411,
+          "Two year": 0.2436,
+          "One year": 0.2152
+        },
+        "current_distribution": {
+          "Month-to-month": 0.6652,
+          "One year": 0.2,
+          "Two year": 0.1348
+        },
+        "max_category_shift_pct": 12.41
+      },
+      "PaperlessBilling": {
+        "reference_distribution": {
+          "Yes": 0.5871,
+          "No": 0.4129
+        },
+        "current_distribution": {
+          "Yes": 0.6624,
+          "No": 0.3376
+        },
+        "max_category_shift_pct": 7.53
+      },
+      "PaymentMethod": {
+        "reference_distribution": {
+          "Electronic check": 0.3388,
+          "Bank transfer (automatic)": 0.2313,
+          "Mailed check": 0.2253,
+          "Credit card (automatic)": 0.2046
+        },
+        "current_distribution": {
+          "Electronic check": 0.4352,
+          "Credit card (automatic)": 0.1988,
+          "Bank transfer (automatic)": 0.1836,
+          "Mailed check": 0.1824
+        },
+        "max_category_shift_pct": 9.64
+      },
+      "predicted_churn": {
+        "reference_distribution": {
+          "No": 0.6046,
+          "Yes": 0.3954
+        },
+        "current_distribution": {
+          "Yes": 0.698,
+          "No": 0.302
+        },
+        "max_category_shift_pct": 30.26
+      },
+      "risk_level": {
+        "reference_distribution": {
+          "LOW": 0.4153,
+          "HIGH": 0.3097,
+          "MEDIUM": 0.275
+        },
+        "current_distribution": {
+          "HIGH": 0.6092,
+          "MEDIUM": 0.2508,
+          "LOW": 0.14
+        },
+        "max_category_shift_pct": 29.95
+      }
+    }
+  }
+}
