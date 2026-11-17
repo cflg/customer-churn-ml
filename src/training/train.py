@@ -8,7 +8,9 @@ Ejemplos:
     python -m src.training.train --model rf --n-estimators 300 --max-depth 8 --register
 """
 import argparse
+import json
 
+import joblib
 import mlflow
 import mlflow.sklearn
 import pandas as pd
@@ -18,6 +20,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
 from src.config import (
+    ROOT_DIR,
     TRAIN_DATA_PATH,
     TEST_DATA_PATH,
     FEATURE_COLUMNS,
@@ -111,6 +114,26 @@ def main():
         )
 
         run_id = mlflow.active_run().info.run_id
+        if args.register:
+            models_dir = ROOT_DIR / "models"
+            models_dir.mkdir(parents=True, exist_ok=True)
+            artifact_file = models_dir / "churn_pipeline.joblib"
+            joblib.dump(pipeline, artifact_file)
+            metadata = {
+                "model_name": MODEL_REGISTRY_NAME,
+                "model_version": "1",
+                "run_id": run_id,
+                "run_name": args.run_name or args.model,
+                "algorithm": type(pipeline.named_steps["model"]).__name__,
+                "artifact_path": "models/churn_pipeline.joblib",
+                "metrics": {
+                    k: round(float(v), 4)
+                    for k, v in metrics.items()
+                    if isinstance(v, (int, float))
+                },
+            }
+            with open(models_dir / "model_metadata.json", "w", encoding="utf-8") as f:
+                json.dump(metadata, f, indent=2)
         print(f"run_id={run_id} model={args.model} params={params}")
         print("metrics:", metrics)
 

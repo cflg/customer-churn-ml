@@ -2,4 +2,10 @@
 /data/processed/*.csv
 !/data/.gitkeep
 /data
-
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+predictions.csv
+monitoring/reports/*.html

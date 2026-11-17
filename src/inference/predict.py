@@ -6,13 +6,15 @@ Uso:
     python -m src.inference.predict --run-id <RUN_ID> --input data/raw/customer_churn_historical.csv
 """
 import argparse
+from pathlib import Path
 
-import mlflow
+import joblib
 import pandas as pd
 
-from src.config import FEATURE_COLUMNS
+from src.config import FEATURE_COLUMNS, ROOT_DIR
 
 RISK_THRESHOLDS = {"LOW": 0.3, "MEDIUM": 0.6}  # >=0.6 => HIGH
+DEFAULT_MODEL_PATH = ROOT_DIR / "models" / "churn_pipeline.joblib"
 
 
 def risk_level(probability: float) -> str:
@@ -23,12 +25,21 @@ def risk_level(probability: float) -> str:
     return "HIGH"
 
 
-def load_model(run_id: str = None, model_uri: str = None):
+def load_model(
+    run_id: str = None, model_uri: str = None, model_path: str | Path = None
+):
     if model_uri:
+        import mlflow
+
         return mlflow.sklearn.load_model(model_uri)
     if run_id:
+        import mlflow
+
         return mlflow.sklearn.load_model(f"runs:/{run_id}/model")
-    raise ValueError("Se necesita --run-id o --model-uri")
+    resolved_path = Path(model_path) if model_path else DEFAULT_MODEL_PATH
+    if resolved_path.exists():
+        return joblib.load(resolved_path)
+    raise ValueError("Se necesita --run-id, --model-uri o un artefacto en models/")
 
 
 def predict_df(model, df: pd.DataFrame) -> pd.DataFrame:
